@@ -1,0 +1,44 @@
+{
+  "name": "jjack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open, update, land, and clean up stacks of GitHub pull requests from jj changes",
+  "license": "MIT",
+  "bin": {
+    "jjack": "dist/jjack.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsdown",
+    "prepack": "npm run build",
+    "fmt": "oxfmt --write .",
+    "fmt:check": "oxfmt --check .",
+    "lint": "oxlint",
+    "tsc": "tsc --noEmit",
+    "test": "vitest run",
+    "ci": "npm run tsc && npm run lint && npm run fmt:check && npm test"
+  },
+  "devDependencies": {
+    "@commander-js/extra-typings": "^15.1.0",
+    "@types/node": "^24",
+    "commander": "^15.1.0",
+    "oxfmt": "^0.79.0",
+    "oxlint": "^1.94.0",
+    "tsdown": "^0.23.7",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "allowScripts": {
+    "fsevents": false
+  }
+}
